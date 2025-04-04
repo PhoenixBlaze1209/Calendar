@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2025 Calendar</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <link rel="icon" href="Philippine calendar logo.png" type="image" sizes="16x16">
+    <style>
+        body {
+            font-family: sans-serif;
+        }
+
+        .calendar-table {
+            width: 100%;
+            border-collapse: collapse; /* Makes borders cleaner */
+            margin-bottom: 20px;
+        }
+        .calendar-table th, .calendar-table td {
+            text-align: center;
+            padding: 10px;
+            border: 1px solid #ddd;
+        }
+        .calendar-table th, .calendar-table td:hover {
+            background-color: rgba(169, 169, 169, 0.547);
+        }
+
+        .calendar-table td {
+            background-color: #fff;
+        }
+        .month-header {
+            text-align: center;
+            margin-bottom: 15px;
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #333; /* Darker text color */
+        }
+        .calendar-table {
+            width: 80%;
+            margin: 20px auto;
+        }
+
+        .calendar-table th {
+          background-color: #abab73; /* Light gray background for header */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>2025 Calendar</h1>
+        <div class="row">
+            <div class="col-md-12">
+                <div id="calendar"></div>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        const months = ["Enero", "Pebrero", "Marso", "Abril", "Mayo", "Hunyo", "Hulyo", "Agosto", "Setyembre", "Oktubre", "Nobyembre", "Disyembre"];
+        const daysInMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]; // Adjust for leap years
+
+        function generateCalendar(year) {
+            let calendarHTML = '';
+            for (let month = 0; month < 12; month++) {
+                calendarHTML += `<h3>${months[month]} ${year}</h3>`;
+                calendarHTML += '<table class="table table-bordered calendar-table">';
+                calendarHTML += '<thead><tr><th>Sun</th><th>Mon</th><th>Tue</th><th>Wed</th><th>Thu</th><th>Fri</th><th>Sat</th></tr></thead><tbody>';
+
+                let firstDay = new Date(year, month, 1).getDay();
+                let days = daysInMonth[month];
+                let date = 1;
+
+                for (let i = 0; i < 6; i++) { // Maximum 6 weeks
+                    calendarHTML += '<tr>';
+                    for (let j = 0; j < 7; j++) {
+                        if (i === 0 && j < firstDay) {
+                            calendarHTML += '<td></td>';
+                        } else if (date > days) {
+                            calendarHTML += '<td></td>';
+                        } else {
+                            calendarHTML += `<td>${date}</td>`;
+                            date++;
+                        }
+                    }
+                    calendarHTML += '</tr>';
+                }
+                calendarHTML += '</tbody></table>';
+            }
+            document.getElementById('calendar').innerHTML = calendarHTML;
+        }
+
+        generateCalendar(2025);
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+</body>
+</html>
