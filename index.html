@@ -13,7 +13,7 @@
 
         .calendar-table {
             width: 100%;
-            border-collapse: collapse; /* Makes borders cleaner */
+            border-collapse: collapse; 
             margin-bottom: 20px;
         }
         .calendar-table th, .calendar-table td {
@@ -33,7 +33,7 @@
             margin-bottom: 15px;
             font-size: 1.2em;
             font-weight: bold;
-            color: #333; /* Darker text color */
+            color: #333; 
         }
         .calendar-table {
             width: 80%;
@@ -41,7 +41,7 @@
         }
 
         .calendar-table th {
-          background-color: #abab73; /* Light gray background for header */
+          background-color: #abab73; 
         }
     </style>
 </head>
@@ -58,7 +58,7 @@
 
     <script>
         const months = ["Enero", "Pebrero", "Marso", "Abril", "Mayo", "Hunyo", "Hulyo", "Agosto", "Setyembre", "Oktubre", "Nobyembre", "Disyembre"];
-        const daysInMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]; // Adjust for leap years
+        const daysInMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]; 
 
         function generateCalendar(year) {
             let calendarHTML = '';
@@ -71,7 +71,7 @@
                 let days = daysInMonth[month];
                 let date = 1;
 
-                for (let i = 0; i < 6; i++) { // Maximum 6 weeks
+                for (let i = 0; i < 6; i++) { 
                     calendarHTML += '<tr>';
                     for (let j = 0; j < 7; j++) {
                         if (i === 0 && j < firstDay) {
